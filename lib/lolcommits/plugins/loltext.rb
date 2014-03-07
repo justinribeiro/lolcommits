@@ -27,7 +27,7 @@ module Lolcommits
         c.pointsize(self.runner.animate? ? '24' : '48')
         c.interline_spacing '-9'
         c.font font_location
-        c.annotate '0', clean_msg(self.runner.message)
+	c.annotate '0', clean_msg('"' + self.runner.message + '"')
       end
 
       image.combine_options do |c|
@@ -60,7 +60,7 @@ module Lolcommits
     # conversion for quotation marks to avoid shell interpretation
     # does not seem to be a safe way to escape cross-platform?
     def escape_quotes(text)
-      text.gsub(/"/, "''")
+      text.gsub(/"/, '#')
     end
 
     # convenience method for word wrapping
